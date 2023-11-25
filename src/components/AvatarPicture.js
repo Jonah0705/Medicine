@@ -1,5 +1,4 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button } from "@material-tailwind/react";
 import {
     Avatar
 } from "@material-tailwind/react";
@@ -14,7 +13,7 @@ const AvatarPicture = () => {
             <Avatar variant="circular"
             size="sm"
             alt="avatar"
-            className="border border-gray-900 p-0.5 mr-2"
+            className="border border-gray-900 lg:ml-[-40px]"
             src={user.picture}
         />
         )
