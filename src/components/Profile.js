@@ -1,6 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-/*import { useCallback } from "react";
-import { Button } from "@material-tailwind/react"; */
+
 
 const Profile = () => {
     const {user, isAuthenticated} = useAuth0();
@@ -14,8 +13,8 @@ const Profile = () => {
                     {Object.keys(user).map((objKey, i) => <li key={i}>{objKey}: {user[objKey]} </li>)}
                 </ul>
             </article>
-        )
-    )
+        ) 
+    );
 }
 
 export default Profile;

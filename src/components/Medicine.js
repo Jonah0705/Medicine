@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Searchbar from './Searchbar';
+import Spinner from './Spinner';
 
 
 const Medicine = () => {
@@ -13,6 +14,7 @@ const Medicine = () => {
     <div>
         <Searchbar onSearch={handleSearch}/>
         <h1 className='text-center'>{searchTerm ? `You Searched: ${searchTerm}` : 'Medicine Page Content'}</h1>
+        <Spinner />
     </div>
       );
 };
