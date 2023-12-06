@@ -121,7 +121,7 @@ export function NavbarDefault() {
   return (
     <Navbar className="max-w-screen-3xl bg-white-500" >
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-      <div className="flex items-left lg:ml-[-40px]">
+      <div className="flex items-center lg:ml-[-40px]">
           <AvatarPicture />
           <Typography
             as="a"

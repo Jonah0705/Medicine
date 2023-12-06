@@ -8,7 +8,7 @@
     box-sizing: border-box;
   }
 
-  img {
+  .Avatar {
     width: 200px;
     border: 0.5rem double #000;
     border-radius: 50%;
