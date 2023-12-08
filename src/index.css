@@ -29,3 +29,7 @@
     width: 90%;
     margin: 1rem;
   }
+
+  .carousel {
+    height: 600px;
+  }

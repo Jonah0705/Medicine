@@ -19,7 +19,7 @@ import NavbarDefault from './components/Navbar';
 function App() {
   const {isLoading, error} = useAuth0();
   return (
-    <main className='column'>
+    <main >
       <NavbarDefault />
       {error && 
       <LoginButton />}
