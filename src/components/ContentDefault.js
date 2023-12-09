@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 import Information from './Information';
 
-const API = ({ searchTerm }) => {
+const ContentDefault = ({  }) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
@@ -20,7 +20,7 @@ const API = ({ searchTerm }) => {
       var page = 1;
       try {
         setFetchingdata(true);
-        const response = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.generic_name:${encodeURIComponent(searchTerm)}&limit=15&skip=${page * 10 - 10}`);
+        const response = await fetch(`https://api.fda.gov/drug/label.json?search=&limit=15&skip=${page * 10 - 10}`);
         const result = await response.json();
         setData(result);
         setError(false);
@@ -35,7 +35,7 @@ const API = ({ searchTerm }) => {
     };
 
     fetchData();
-  }, [searchTerm]);
+  }, []);
 
   return (
     <div>
@@ -65,7 +65,7 @@ const API = ({ searchTerm }) => {
                 </CardBody>
                 <CardFooter className="pt-0">
                   <Button>Read More</Button>
-                  <Information name={result.openfda.brand_name}/>
+                  <Information result={results}/>
                 </CardFooter>
               </Card>
             </div>
@@ -75,15 +75,11 @@ const API = ({ searchTerm }) => {
         <Spinner />
       ) : (
         <div className='error'>
-          <p>No results found.</p>
+          <p>Type To search the medicine</p>
         </div>
       )}
     </div>
   );
 };
 
-export default API;
-
-
-
-
+export default ContentDefault;

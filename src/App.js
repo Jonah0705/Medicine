@@ -24,7 +24,7 @@ function App() {
       {error && 
       <LoginButton />}
       {!error && isLoading && 
-      <><Spinner /></>
+      <Spinner />
       }
       {!error && !isLoading && (
         <>

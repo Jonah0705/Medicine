@@ -1,45 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import Spinner from './Spinner';
 import {
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
   Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
 } from "@material-tailwind/react";
-import Information from './Information';
-
-const API = ({ searchTerm }) => {
+import Spinner from './Spinner';
+ 
+export function Information(props) {
+  const [size, setSize] = React.useState(null);
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
-  const [fetchingdata, setFetchingdata] = useState(null);
-  
+ 
+  const handleOpen = (value) => setSize(value);
+
   useEffect(() => {
     const fetchData = async () => {
       var page = 1;
       try {
-        setFetchingdata(true);
-        const response = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.generic_name:${encodeURIComponent(searchTerm)}&limit=15&skip=${page * 10 - 10}`);
+        const response = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.generic_name:${encodeURIComponent(props.name)}&limit=1`);
         const result = await response.json();
         setData(result);
-        setError(false);
         setResults(result.results);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setError(true);
         setData(null);
-      } finally {
-        setFetchingdata(false); 
-      }
+      } 
     };
 
     fetchData();
-  }, [searchTerm]);
-
+  }, []);
+ 
   return (
-    <div>
-      {!error && results && !fetchingdata ? (
+    <>
+      <div className="mb-3 flex gap-3">
+        <Button onClick={() => handleOpen("xl")} variant="gradient">
+          More Information
+        </Button>
+      </div>
+      <Dialog
+        open={
+          size === "xl" 
+        }
+        size={size || "md"}
+        handler={handleOpen}
+      >
+        <DialogHeader>Its a simple dialog.</DialogHeader>
+        <DialogBody>
+
+        {results ? (
         <>
           <h2 className='mb-5'>Results:</h2>
           {results.map((result, index) => (
@@ -54,36 +64,34 @@ const API = ({ searchTerm }) => {
                <p className='mb-2.5'> {result.active_ingredient && "Active Ingredient: " +  result.active_ingredient[0]}</p>
                <p className='mb-2.5'> {result.other_safety_information && "Other Safety Information: " +  result.other_safety_information[0]}</p>
                <p className='mb-2.5'> {result.dosage_and_administration && "Dosage and Administration: " +  result.dosage_and_administration[0]}</p>
-              <Card className="mt-6 w-96">
-                <CardBody>
-                  <Typography variant="h5" color="blue-gray" className="mb-2">
-                    {result.openfda.brand_name && result.openfda.brand_name[0]}
-                  </Typography>
-                  <Typography>
-                    {result.purpose && result.purpose[0]}
-                  </Typography>
-                </CardBody>
-                <CardFooter className="pt-0">
-                  <Button>Read More</Button>
-                  <Information name={result.openfda.brand_name}/>
-                </CardFooter>
-              </Card>
             </div>
           ))}
         </>
-      ) : fetchingdata ? (
-        <Spinner />
       ) : (
-        <div className='error'>
-          <p>No results found.</p>
-        </div>
+        <Spinner />
       )}
-    </div>
+        
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={() => handleOpen(null)}
+            className="mr-1"
+          >
+            <span>Cancel</span>
+          </Button>
+          <Button
+            variant="gradient"
+            color="green"
+            onClick={() => handleOpen(null)}
+          >
+            <span>Confirm</span>
+          </Button>
+        </DialogFooter>
+      </Dialog>
+    </>
   );
-};
+}
 
-export default API;
-
-
-
-
+export default Information;

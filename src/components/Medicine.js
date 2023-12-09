@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Searchbar from './Searchbar';
 import API from './API';
+import Information  from './Information';
+import ContentDefault from './ContentDefault';
 
 
 const Medicine = () => {
@@ -14,7 +16,8 @@ const Medicine = () => {
     <div>
         <Searchbar onSearch={handleSearch}/>
         <h1 className='text-center'>{searchTerm ? `You Searched: ${searchTerm}` : 'Medicine Page Content'}</h1>
-        {searchTerm ? <API searchTerm={searchTerm} /> : null}
+        {searchTerm ? <API searchTerm={searchTerm} /> : <ContentDefault />}
+        <Information />
     </div>
       
       );
