@@ -46,7 +46,7 @@ export function Information(props) {
         size={size || "md"}
         handler={handleOpen}
       >
-        <DialogHeader>Its a simple dialog.</DialogHeader>
+        <DialogHeader>{props.name}</DialogHeader>
         <DialogBody>
 
         {results ? (

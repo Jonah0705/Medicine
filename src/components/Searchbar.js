@@ -17,7 +17,7 @@ const Searchbar = ({ onSearch }) => {
       <div className="max-w-screen-3xl px-4 py-4 lg:px-8 lg:py-6 mt-4">
         <form onSubmit={handleSubmit}>
           <h1 className="text-center font-bold text-white text-4xl">Find the right medicine for you</h1>
-          <p className="mx-auto font-normal text-sm my-6 max-w-lg">Use the search bar below to find the right medicine for your symptoms</p>
+          <p className="mx-auto font-normal text-sm text-white my-6 max-w-lg">Use the search bar below to find the right medicine for your symptoms</p>
           <div className="input-field sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
             <input
               id="search"

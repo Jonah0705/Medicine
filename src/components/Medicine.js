@@ -17,7 +17,7 @@ const Medicine = () => {
         <Searchbar onSearch={handleSearch}/>
         <h1 className='text-center'>{searchTerm ? `You Searched: ${searchTerm}` : 'Medicine Page Content'}</h1>
         {searchTerm ? <API searchTerm={searchTerm} /> : <ContentDefault />}
-        <Information />
+
     </div>
       
       );
