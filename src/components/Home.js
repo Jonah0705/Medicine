@@ -1,11 +1,10 @@
 import React from 'react';
+import CarouselTransition from './Carousel';
 
-
-
-const Home = () => (
-    <div>Home Page Content</div>
+const Home = () => {
+  return (
+    <><CarouselTransition /></>
   );
+};
 
-
-
-  export default Home;
+export default Home;

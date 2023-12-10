@@ -13,9 +13,9 @@ const AvatarPicture = () => {
             <Avatar variant="circular"
             size="sm"
             alt="avatar"
-            className="border border-gray-900 lg:ml-[-40px] Avatar"
             src={user.picture}
         />
+
         )
     )
 }
