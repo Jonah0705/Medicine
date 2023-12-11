@@ -15,7 +15,7 @@ const Medicine = () => {
       return (
     <div>
         <Searchbar onSearch={handleSearch}/>
-        <h1 className='text-center'>{searchTerm ? `You Searched: ${searchTerm}` : null}</h1>
+        <h1 className='text-center'>{searchTerm ? `You Searched for: ${searchTerm}` : null}</h1>
         {searchTerm ? <API searchTerm={searchTerm} /> : <ContentDefault />}
 
     </div>

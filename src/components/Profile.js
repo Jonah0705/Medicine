@@ -10,8 +10,8 @@ const Profile = () => {
     return (
         isAuthenticated ? (
 
-            <div
-            ><ProfileCard /><History />
+            <div className="flex">
+                <ProfileCard /><History />
             </div>
         ) : (
             <NotLoggedIn />

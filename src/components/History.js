@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { Typography } from "@material-tailwind/react";
+import Spinner from './Spinner';
 
 const History = () => {
   return (
-    <div>
-      History Here:
+    <div className="text-center justify-center">
+      <Typography variant="h3" color="blue-gray" className="font-bold">
+        <p>Your Serach History:</p>
+      </Typography>
+    <Spinner />
     </div>
-  )
+  );
 }
 
-export default History
+export default History;
