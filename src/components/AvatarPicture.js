@@ -11,7 +11,7 @@ const AvatarPicture = () => {
     return (
         isAuthenticated && (
             <Avatar variant="circular"
-            size="sm"
+            size="md"
             alt="avatar"
             src={user.picture}
         />

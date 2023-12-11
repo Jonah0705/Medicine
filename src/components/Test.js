@@ -1,41 +1,30 @@
-import React from 'react';
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+import { useAuth0 } from "@auth0/auth0-react";
+import React from "react";
+import NotLoggedIn from "./NotLoggedIn";
+import ProfileCard from "./ProfileCard";
+import History from "./History";
 
-const Test = () => {
-  const rows = [[1, 2, 3], [4, 5, 6]];
+const Profile = () => {
+    const { user, isAuthenticated } = useAuth0();
 
-  return (
-    <div className="flex flex-wrap">
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="flex mb-6">
-          {row.map((index) => (
-            <Card key={index} className="mx-2 w-1/3">
-              <CardBody>
-                <Typography variant="h5" color="blue-gray" className="mb-2">
-                  UI/UX Review Check
-                </Typography>
-                <Typography>
-                  The place is close to Barceloneta Beach and bus stop just 2 min by
-                  walk and near to &quot;Naviglio&quot; where you can enjoy the main
-                  night life in Barcelona.
-                </Typography>
-              </CardBody>
-              <CardFooter className="pt-0">
-                <Button>Read More</Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-};
+    return (
+        isAuthenticated ? (
+            <article>
+                {user?.picture && <img src={user.picture} alt={user?.name} />}
+                <h2>{user?.name}</h2>
+                <ul>
+                    {Object.keys(user).map((objKey, i) => (
+                        <li key={i}>
+                            {objKey}: {user[objKey]}
+                        </li>
+                    ))}
+                </ul>
+            </article>
+        ) : (
+            <NotLoggedIn />
+        )
+    );
+}
 
-export default Test;
+export default Profile;
 

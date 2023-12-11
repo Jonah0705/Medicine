@@ -7,6 +7,7 @@ import {
   MobileNav,
   Typography,
   IconButton,
+  Avatar
 
 } from "@material-tailwind/react";
  
@@ -119,17 +120,17 @@ export function NavbarDefault() {
   );
  
   return (
-    <Navbar className="max-w-screen-3xl bg-white-500" >
+    <Navbar className="max-w-screen-3xl bg-white-500 h-28" >
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
       <div className="flex items-center lg:ml-[-40px]">
           <AvatarPicture />
-          <Typography
-            as="a"
-            href="#"
-            className="cursor-pointer font-medium lg:pl-2"
-          >
-            Medicine Application 
-          </Typography>
+          <Avatar
+            alt="avatar"
+            src="/images/Medinfo.png"
+            variant="rounded"
+            size="xxl"
+            className="ml-4"
+          />
         </div>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">

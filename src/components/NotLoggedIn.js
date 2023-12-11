@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import LoginButton from './LoginButton';
 
 const NotLoggedIn = () => {
   return (
-    <div className='flex items-center justify-center h-screen'>
-      Not Logged In, Please Login to use this feature
+    <div className='flex flex-col items-center justify-center h-screen'>
+      <div>Not Logged In, Please Login to use this feature</div>
+      <div className='mt-5'>
+        <LoginButton />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default NotLoggedIn
+export default NotLoggedIn;

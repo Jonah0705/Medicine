@@ -1,4 +1,5 @@
-import { Carousel, Typography, Button } from "@material-tailwind/react";
+import { Carousel, Typography, Button, Avatar } from "@material-tailwind/react";
+import LoginButton from "./LoginButton";
  
 export function CarouselTransition() {
   return (
@@ -27,10 +28,9 @@ export function CarouselTransition() {
             </Typography>
             <div className="flex justify-center gap-2">
               <Button size="lg" color="white">
-                Explore
-              </Button>
-              <Button size="lg" color="white" variant="text">
-                Gallery
+              <a href="/Medicine" className="flex items-center">
+          Medicine
+        </a>
               </Button>
             </div>
           </div>
@@ -49,7 +49,16 @@ export function CarouselTransition() {
               color="white"
               className="mb-4 text-3xl md:text-4xl lg:text-5xl"
             >
-              Medinfo
+           <Avatar
+            alt="avatar"
+            src="/images/Medinfo.png"
+            variant="rounded"
+            className="w-80 h-80"
+            withBorder={true}
+            color="green"
+          />
+
+            
             </Typography>
             <Typography
               variant="lead"
@@ -59,12 +68,7 @@ export function CarouselTransition() {
               The Centralized Medicine And Drug Information App.
             </Typography>
             <div className="flex gap-2">
-              <Button size="lg" color="white">
-                Explore
-              </Button>
-              <Button size="lg" color="white" variant="text">
-                Gallery
-              </Button>
+              <LoginButton />
             </div>
           </div>
         </div>
@@ -93,10 +97,7 @@ export function CarouselTransition() {
             </Typography>
             <div className="flex gap-2">
               <Button size="lg" color="white">
-                Explore
-              </Button>
-              <Button size="lg" color="white" variant="text">
-                Gallery
+                View Your Profile
               </Button>
             </div>
           </div>
