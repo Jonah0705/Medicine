@@ -1,5 +1,5 @@
 import React from 'react';
-import CarouselTransition from './Carousel';
+import CarouselTransition from '../components/Carousel';
 
 const Home = () => {
   return (

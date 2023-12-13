@@ -1,7 +1,7 @@
-import Profile from './components/Profile';
+import Profile from './pages/Profile';
 import LoginButton from './components/LoginButton';
-import Home from  './components/Home';
-import Medicine from  './components/Medicine';
+import Home from  './pages/Home';
+import Medicine from  './pages/Medicine';
 import Test from './components/Test';
 import { useAuth0 } from '@auth0/auth0-react';
 import './index.css';

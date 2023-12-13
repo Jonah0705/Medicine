@@ -12,13 +12,14 @@ export function CarouselTransition() {
         />
         <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
           <div className="w-3/4 text-center md:w-2/4">
-            <Typography
-              variant="h1"
-              color="white"
-              className="mb-4 text-3xl md:text-4xl lg:text-5xl"
-            >
-              Medinfo
-            </Typography>
+          <Avatar
+            alt="avatar"
+            src="/images/Medinfo.png"
+            variant="rounded"
+            className="w-80 h-80"
+            withBorder={false}
+            color="green"
+          />
             <Typography
               variant="lead"
               color="white"
@@ -54,7 +55,7 @@ export function CarouselTransition() {
             src="/images/Medinfo.png"
             variant="rounded"
             className="w-80 h-80"
-            withBorder={true}
+            withBorder={false}
             color="green"
           />
 

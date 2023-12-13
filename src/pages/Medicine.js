@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Searchbar from './Searchbar';
-import API from './API';
-import Information  from './Information';
-import ContentDefault from './ContentDefault';
+import Searchbar from '../components/Searchbar';
+import API from '../components/API';
+import Information  from '../components/Information';
+import ContentDefault from '../components/ContentDefault';
 
 
 const Medicine = () => {

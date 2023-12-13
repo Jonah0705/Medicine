@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from "@material-tailwind/react";
-import Spinner from './Spinner';
+import Spinner from '../components/Spinner';
 
 const History = () => {
   return (
