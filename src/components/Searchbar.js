@@ -1,15 +1,39 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Searchbar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const { user } = useAuth0(); 
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSearch(searchTerm);
+
+    try {
+      const response = await axios.post(
+        'http://localhost/savetohistory.php', 
+        new URLSearchParams({
+          searchTerm: searchTerm,
+          username: user?.name || '',
+        }).toString(),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+        
+      );
+
+      console.log(response.data);
+
+      onSearch(searchTerm);
+    } catch (error) {
+      console.error('Error submitting the form:', error);
+    }
   };
 
   return (
