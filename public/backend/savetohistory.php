@@ -18,8 +18,11 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $searchTerm = $_POST["searchTerm"];
     $username = $_POST["username"];
+    
+    // Get the current date and time
+    $timestamp = date("Y-m-d H:i:s");
 
-    $sql = "INSERT INTO search_history (searched_result, username) VALUES ('$searchTerm', '$username')";
+    $sql = "INSERT INTO search_history (searched_result, username, timestamp) VALUES ('$searchTerm', '$username', '$timestamp')";
      
     if ($conn->query($sql) === TRUE) {
         echo "Search term added to history successfully";
@@ -27,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
-
 
 $conn->close();
 ?>

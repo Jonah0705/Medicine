@@ -48,7 +48,7 @@ const History = () => {
           <li key={item.id} className="bg-gray-100 p-4 mb-2 rounded-md flex justify-between items-center">
             <div>
               <p className="text-lg font-semibold">{item.searched_result}</p>
-              <p className="text-sm text-gray-500">Searched by: {item.username}</p>
+              <p className="text-sm text-gray-500">Searched at: {item.timestamp}</p>
             </div>
             <button
               className="text-red-500 hover:text-red-700 cursor-pointer"

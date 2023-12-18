@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2023 at 07:53 AM
+-- Generation Time: Dec 18, 2023 at 08:24 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `search_history` (
   `searched_result` varchar(200) NOT NULL,
   `id` int(200) NOT NULL,
-  `username` varchar(200) NOT NULL
+  `username` varchar(200) NOT NULL,
+  `timestamp` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,5 +58,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-/*Run this code in phpMyAdmin*/;
