@@ -9,7 +9,7 @@ const History = () => {
   const [historyData, setHistoryData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
   const [totalItems, setTotalItems] = useState(0);
-  const itemsPerPage = 15;
+  const itemsPerPage = 5;
 
   const fetchData = async () => {
     try {
@@ -22,14 +22,12 @@ const History = () => {
   };
 
   useEffect(() => {
-    // Fetch data from the server when the component mounts or when the page changes
     fetchData();
   }, [user?.name, currentPage]);
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost/gethistory.php?id=${id}`);
-      // Refetch data after deletion
       fetchData();
     } catch (error) {
       console.error('Error deleting search term:', error);
@@ -51,7 +49,7 @@ const History = () => {
               <p className="text-sm text-gray-500">Searched at: {item.timestamp}</p>
             </div>
             <button
-              className="text-red-500 hover:text-red-700 cursor-pointer"
+              className="text-white cursor-pointer bg-red-700 rounded"
               onClick={() => handleDelete(item.id)}
             >
               Delete
@@ -63,6 +61,7 @@ const History = () => {
         activePage={currentPage}
         total={totalItems} // Pass the total count of items for proper pagination
         onPageChange={handlePageChange}
+        perPage={itemsPerPage}
       />
     </div>
   );

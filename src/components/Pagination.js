@@ -3,9 +3,8 @@ import { IconButton, Typography } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 export function Pagination(props) {
-  const { activePage, onPageChange } = props;
-
-  const totalItems = Math.ceil(props.total / 15);
+  const { activePage, onPageChange, perPage } = props;
+  const totalItems = Math.ceil(props.total / perPage);
 
   const next = () => {
     if (activePage === totalItems) return;

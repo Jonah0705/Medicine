@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Spinner from './Spinner';
-import Pagination  from './Pagination';
+import Pagination from './Pagination';
 import {
   Card,
   CardBody,
   CardFooter,
   Typography,
   CardHeader,
-  Button,
 } from "@material-tailwind/react";
 import Information from './Information';
+import axios from 'axios';
 
 const API = ({ searchTerm }) => {
   const [data, setData] = useState(null);
@@ -18,13 +18,19 @@ const API = ({ searchTerm }) => {
   const [fetchingdata, setFetchingdata] = useState(null);
   const [meta, setMeta] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   useEffect(() => {
     const fetchData = async () => {
-      var page = 1;
       try {
         setFetchingdata(true);
-        const response = await fetch(`https://api.fda.gov/drug/label.json?search=${encodeURIComponent(searchTerm)}+AND+_exists_:openfda.brand_name+AND+_exists_:purpose&limit=12&skip=${currentPage * 10 - 10}`);
+        const page = currentPage;
+        const response = await fetch(
+          `https://api.fda.gov/drug/label.json?search=${encodeURIComponent(
+            searchTerm
+          )}+AND+_exists_:openfda.brand_name+AND+_exists_:purpose&limit=9&skip=${
+            page * 10 - 10
+          }`
+        );
         const result = await response.json();
         setData(result);
         setError(false);
@@ -35,7 +41,7 @@ const API = ({ searchTerm }) => {
         setError(true);
         setData(null);
       } finally {
-        setFetchingdata(false); 
+        setFetchingdata(false);
       }
     };
 
@@ -48,17 +54,19 @@ const API = ({ searchTerm }) => {
 
   return (
     <div>
-      {!error && results && !fetchingdata ? (
-      <><>
-          <h2 className='mb-5 text-xl font-bold text-center'>Results: <span>{meta.results.total}</span> items</h2>
+      {fetchingdata ? (
+        <Spinner />
+      ) : !error && results ? (
+        <>
+          <h2 className='mb-5 text-xl font-bold text-center'>
+            Results: <span>{meta.results.total}</span> items
+          </h2>
           <div className="flex flex-wrap">
             {results.map((result, index) => (
               <div key={index} className='mb-5 flex flex-wrap w-1/3 pl-2'>
                 <Card className="mt-6 flex-1 bg-gray-100">
                   <CardHeader color="blue-gray" className="relative h-56">
-                    <img
-                      src="/images/medicine_bottle_sized.jpeg"
-                      alt="card-image" />
+                    <img src="/images/medicine_bottle_sized.jpeg" alt="card-image" />
                   </CardHeader>
 
                   <CardBody className="flex flex-col">
@@ -76,12 +84,13 @@ const API = ({ searchTerm }) => {
               </div>
             ))}
           </div>
-        </><Pagination total={meta.results.total}
+          <Pagination
+            total={meta.results.total}
             activePage={currentPage}
-            onPageChange={handlePageChange} /></>
-       
-      ) : fetchingdata ? (
-        <Spinner />
+            onPageChange={handlePageChange}
+            perPage={9}
+          />
+        </>
       ) : (
         <div className='flex justify-center'>
           <p>No results found.</p>
@@ -92,7 +101,5 @@ const API = ({ searchTerm }) => {
 };
 
 export default API;
-
-
 
 

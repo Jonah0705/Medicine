@@ -30,7 +30,7 @@ export function CarouselTransition() {
             <div className="flex justify-center gap-2">
               <Button size="lg" color="white">
               <a href="/Medicine" className="flex items-center">
-          Medicine
+          View Medicine
         </a>
               </Button>
             </div>
@@ -97,8 +97,10 @@ export function CarouselTransition() {
               The Centralized Medicine And Drug Information App.
             </Typography>
             <div className="flex gap-2">
-              <Button size="lg" color="white">
-                View Your Profile
+              <Button size="lg" color="white" href="/Profile">
+                <a href="/Profile" className="flex items-center">
+                View Profile
+                </a>
               </Button>
             </div>
           </div>
